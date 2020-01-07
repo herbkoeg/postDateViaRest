@@ -1,4 +1,2 @@
 # postDateViaRest
-Demonstrates posting (serialization and deserialization via Jackson) of a localdate in a rest request with Wildfly10 environment.
-
-
+Demonstrates posting (serialization and deserialization via Jackson) of java8 feautures for example LocalDate in a rest request within Wildfly10 environment.
