@@ -5,7 +5,17 @@ import java.time.LocalDate;
 public class PojoWithLocalDate {
 
     private String action;
-    private LocalDate date;
+    private LocalDate someLocalDate;
+
+
+    public PojoWithLocalDate(String action, LocalDate someLocalDate) {
+        this.action = action;
+        this.someLocalDate = someLocalDate;
+    }
+
+    public PojoWithLocalDate() {
+
+    }
 
     public String getAction() {
         return action;
@@ -15,19 +25,19 @@ public class PojoWithLocalDate {
         this.action = action;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getSomeLocalDate() {
+        return someLocalDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setSomeLocalDate(LocalDate someLocalDate) {
+        this.someLocalDate = someLocalDate;
     }
 
     @Override
     public String toString() {
         return "PojoWithLocalDate{" +
                 "action='" + action + '\'' +
-                ", date=" + date +
+                ", date=" + someLocalDate +
                 '}';
     }
 }
