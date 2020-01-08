@@ -41,7 +41,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 @Consumes(MediaType.APPLICATION_JSON)
 public class MyRestEndpoint {
 
-    // curl -X GET "http://localhost:19600/postDateViaRest/rest/postdemo/server/sayhello" -H "accept: application/json"  -v
+    // curl -X GET "http://localhost:8080/postDateViaRest/rest/postdemo/server/sayhello" -H "accept: application/json"  -v
     // --> says 'hello' on the error-console
     @GET
     @Path("/server/sayhello")
@@ -50,7 +50,7 @@ public class MyRestEndpoint {
     }
 
 
-    // curl -X GET "http://localhost:19600/postDateViaRest/rest/postdemo/server/getpojo" -H "accept: application/json"  -v
+    // curl -X GET "http://localhost:8080/postDateViaRest/rest/postdemo/server/getpojo" -H "accept: application/json"  -v
     @GET
     @Path("/server/getpojo")
     public PojoWithLocalDate getExamplePojo() {
@@ -63,7 +63,7 @@ public class MyRestEndpoint {
         System.out.println("-----> /server/postdate successful: " + pojoWithLocalDate);
     }
 
-    // curl -X GET "http://localhost:19600/postDateViaRest/rest/postdemo/client/postdate" -H "accept: application/json"  -v
+    // curl -X GET "http://localhost:8080/postDateViaRest/rest/postdemo/client/postdate" -H "accept: application/json"  -v
     @GET
     @Path("/client/postdate")
     public void callPost() {
@@ -76,8 +76,9 @@ public class MyRestEndpoint {
 
         Response response = ClientBuilder.newClient()
                 // <-- @Provider in  ContextResolver - e.g. JacksonProducer.java - does not work here !! Dont know why :(
+                // you have to register your Producer ... - remove it if you do not believe it ;)
                 .register(JacksonProducer.class)
-                .target( "http://localhost:19600/postDateViaRest/rest/postdemo/server/postdate")
+                .target( "http://localhost:8080/postDateViaRest/rest/postdemo/server/postdate")
                 .request(APPLICATION_JSON)
                 .post(Entity.json(pojoWithLocalDate));
 
